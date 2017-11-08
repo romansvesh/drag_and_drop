@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from pathlib import Path
 
 from constants import helper_constants, tech_constants
-from page import sign_in_form, registration_form, menu_page
+from page import sign_in_form, registration_form, test_page
 
 
 def wait_for_element(element, driver, time=tech_constants.TIMEOUT):
@@ -62,16 +62,16 @@ def login(driver):
 
 
 def switch_to_frame(driver):
-    driver.switch_to.frame(menu_page.get_frame(driver))
+    driver.switch_to.frame(test_page.get_frame(driver))
 
 
 def drag_and_drop_object(driver):
     ActionChains(driver). \
-        move_to_element(menu_page.get_object_for_target(driver)). \
+        move_to_element(test_page.get_object_for_target(driver)). \
         drag_and_drop(
-        menu_page.get_object_for_target(driver), menu_page.get_target(driver)). \
+        test_page.get_object_for_target(driver), test_page.get_target(driver)). \
         perform()
 
 
 def get_target_text(driver):
-    return menu_page.get_target_text(driver).text
+    return test_page.get_target_text(driver).text
